@@ -1,0 +1,18 @@
+{
+   "content_scripts": [ {
+      "js": [ "script.js" ],
+      "matches": [ "http://plus.google.com/*", "https://plus.google.com/*" ]
+   } ],
+   "description": "清理圈子，清除尚未回圈你的人",
+   "key": "/oJ2Go6HLoRJ61Vjl/4HH8eTuIoPE1Yhfb6pir31gbo=",
+   "name": "uncircleToy",
+   "version": "1.0",
+   "icons": {
+      "128": "128.png",
+      "48":"48.png"
+   },
+   "permissions": [
+    "tabs",
+    "://plus.google.com/*"
+   ]
+}

@@ -14,5 +14,6 @@
    "permissions": [
     "tabs",
     "://plus.google.com/*"
-   ]
+   ],
+   "update_url": "https://github.com/aufula/Weird-Chrome-plugins/raw/master/uncirleToy.crx"
 }

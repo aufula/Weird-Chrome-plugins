@@ -9,7 +9,8 @@
    "name": "uncircleToy",
    "version": "1.1",
    "icons": {
-      "48":"48.png"
+      "48":"48.png",
+      "128":"128.png"
    },
    "permissions": [
     "tabs",

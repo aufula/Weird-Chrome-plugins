@@ -1,5 +1,6 @@
 {
    "content_scripts": [ {
+      "css" : [ "style.css" ],
       "js": [ "script.js" ],
       "matches": [ "http://plus.google.com/*", "https://plus.google.com/*" ]
    } ],
@@ -8,7 +9,6 @@
    "name": "uncircleToy",
    "version": "1.0",
    "icons": {
-      "128": "128.png",
       "48":"48.png"
    },
    "permissions": [

@@ -89,39 +89,38 @@
           deleteMember(data,function(d){
             cb();
             alert("清理完成\n"+output.join());
-            location.reload();
           })
         });
       });
-    });
-  }
+});
+}
 
-  function addButton(){
-    var a = document.createElement("a");
-    var node = document.querySelector(".k-Ja-Me");
-    var id = node.href.slice(-16,-1);
-    a.innerHTML = "清理本圈<img id='cleanCircleLoading' src='"+chrome.extension.getURL('loading.gif')+"' />";
-    a.title = "清除本圈中尚未回圈你的人!!";
-    a.id = "cleanCircle";
+function addButton(){
+  var a = document.createElement("a");
+  var node = document.querySelector(".k-Ja-Me");
+  var id = node.href.slice(-16,-1);
+  a.innerHTML = "清理本圈<img id='cleanCircleLoading' src='"+chrome.extension.getURL('loading.gif')+"' />";
+  a.title = "清除本圈中尚未回圈你的人!!";
+  a.id = "cleanCircle";
 
-    a.addEventListener("click",function(){
-      if(xhr.readyState==0){
-        var loading = this.children[0];
-        loading.style.display='inline';
-        clean(id,true,function(){
-          loading.style.display='none';
-        });
-      }
-    },false);
+  a.addEventListener("click",function(){
+    if(xhr.readyState==0 || xhr.readyState==4){
+      var loading = this.children[0];
+      loading.style.display='inline';
+      clean(id,true,function(){
+        loading.style.display='none';
+      });
+    }
+  },false);
 
-    node.parentNode.insertBefore( a, node.nextSibling );
-  }
+  node.parentNode.insertBefore( a, node.nextSibling );
+}
 
-  function main(){
-    if(document.querySelector(".k-Ja-Me")){
-      if(document.getElementById("cleanCircle")) return;
-      addButton();
-    }else{
+function main(){
+  if(document.querySelector(".k-Ja-Me")){
+    if(document.getElementById("cleanCircle")) return;
+    addButton();
+  }else{
       //clean("test",false);
     }
   }

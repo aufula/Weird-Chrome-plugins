@@ -5,7 +5,7 @@ weird-chrome-plugin
 skipad.user.js
 ---------------------
 优酷视频的广告很烦人，替换优酷的默认播放器，双击全屏，跳过广告。
-[立即安装](https://github.com/aufula/Weird-Chrome-plugins/raw/master/skipad.user.js)
+[立即安装](https://gist.github.com/raw/1676524/skipyoukuad.user.js)
 
 uncircleToy
 -----------------------

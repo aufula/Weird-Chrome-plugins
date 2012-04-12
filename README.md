@@ -10,7 +10,7 @@ skipad.user.js
 uncircleToy
 -----------------------
 G+快速清理未回圈者。
-[立即安装](https://github.com/aufula/Weird-Chrome-plugins/raw/master/uncirleToy.crx)
+[立即安装](https://gist.github.com/raw/2366765/uncircleToy.user.js)
 
 twitterRefresh
 -----------------------

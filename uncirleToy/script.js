@@ -101,8 +101,8 @@
 
     function addButton(){
         var a = document.createElement("a");
-        var node = document.querySelector(".k-Ja-Me");
-        var id = node.href.slice(-16,-1);
+        var node = document.querySelector(".w5faHc");
+        var id = location.href.match(/circles\/p(\w+)[^/]/)[1];
 
         if(lang == "zh"){
             a.innerHTML = "清理本圈<img id='cleanCircleLoading' src='"+chrome.extension.getURL('loading.gif')+"' />";
@@ -113,6 +113,7 @@
         }
 
         a.id = "cleanCircle";
+        a.setAttribute("style","padding-top:10px;margin:0;display:inline-block");
 
         a.addEventListener("click",function(){
             if(xhr.readyState==0 || xhr.readyState==4){
@@ -124,17 +125,18 @@
             }
         },false);
 
-        node.parentNode.insertBefore( a, node.nextSibling );
+        // node.parentNode.insertBefore( a, node.nextSibling );
+        node.appendChild(a);
     }
 
     function viewChanged(){
-        var node = document.querySelector(".k-Qf-IH-nb");
-        node.addEventListener("DOMSubtreeModified",function(){
-            if(document.getElementById("cleanCircle")) return;
-            if(node.querySelector(".k-Ja-Me")){
-                addButton();
-            }
-        },false);
+        var url = location.href;
+
+        setInterval(function(){
+            if (!/\/circles\//.test(location.href) ) return console.log("not cirle page"); 
+            if (document.getElementById("cleanCircle")) return;
+            addButton();
+        },50)
     }
 
     function main(){

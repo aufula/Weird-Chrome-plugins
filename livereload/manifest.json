@@ -1,7 +1,9 @@
 {
   "name": "LiveReload",
   "version": "1.7",
-  "background": { "scripts": ["livereload.js"] },
+  "background": { 
+      "page": "background.html"
+      },
   "permissions": [
     "tabs",
     "http://*/*"

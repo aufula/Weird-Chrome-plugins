@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<script>
+/* function addScript(){ */
+/*     if(typeof LiveReload != undefined){ */
+/*         var tag = d.createElement("script"); */
+/*         tag.src="/livereload.js"; */
+/*         document.getElementsByTagName("head")[0].appendChild(tag); */
+/*     } */
+/* } */
+
+var addScript = ' if(!document.getElementById("LIVERELOAD")){ var tag = document.createElement("script");tag.id="LIVERELOAD"; tag.src="/livereload.js"; document.getElementsByTagName("head")[0].appendChild(tag); }';
+
+/* chrome.browserAction.onClicked.addListener(updateIcon); */
+chrome.browserAction.onClicked.addListener(function(tab) {
+    /* var uri = chrome.extension.getURL('livereload.js'); */
+    chrome.tabs.executeScript(null,{code:addScript});
+        chrome.tabs.onUpdated.addListener(function(){
+           chrome.tabs.executeScript(null,{code:addScript});
+        });
+});
+
+</script>
+</html>

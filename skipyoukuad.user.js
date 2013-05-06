@@ -11,7 +11,12 @@ style.innerHTML="object,embed{display:none;}#playerInner{width:inherit;height:in
 document.head.appendChild(style);
 
 var each = [].forEach;
+var inited = false;
 var init = function() {
+
+    if(inited){
+        return false;
+    }
     var Eembeds = document.embeds;
     var Eobject = document.querySelectorAll("object");
 
@@ -53,6 +58,7 @@ var init = function() {
         });
     }
 
+    inited = true;
 }
 
 function generateTag(videoIDS, width, height) {
@@ -106,3 +112,4 @@ function generateTag(videoIDS, width, height) {
 }
 
 window.onload = init;
+init();

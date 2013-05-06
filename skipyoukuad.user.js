@@ -7,7 +7,7 @@
 // ==/UserScript==
 
 var style = document.createElement("style");
-style.innerHTML="object,embed{visibility:hidden}";
+style.innerHTML="object,embed{display:none;}#playerInner{width:inherit;height:inherit;}";
 document.head.appendChild(style);
 
 var each = [].forEach;
@@ -23,6 +23,7 @@ var init = function() {
                 if (fla_v) {
                     fla_v = fla_v[1];
                     var div = document.createElement("div");
+                    div.id = "playerInner";
                     div.innerHTML = generateTag(fla_v, i.width, i.height);
                     if (i.parentNode.nodeName.toLowerCase() == "object") {
                         var pNode = i.parentNode;
@@ -43,6 +44,7 @@ var init = function() {
                 if (fla_v) {
                     fla_v = fla_v[1];
                     var div = document.createElement("div");
+                    div.id = "playerInner";
                     div.innerHTML = generateTag(fla_v, i.width, i.height);
                     i.parentNode.replaceChild(div, i);
                 }
@@ -96,11 +98,11 @@ function generateTag(videoIDS, width, height) {
         isAutoPlay = "false";
     }
 
-    return '<embed style="visibility:visible" src="http://static.youku.com/v1.0.0/v/swf/player.swf?VideoIDS='
+    return '<embed style="display:block" src="http://static.youku.com/v1.0.0/v/swf/player.swf?VideoIDS='
     + videoIDS + '&winType=index&isAutoPlay=' + isAutoPlay
     + '&isShowRelatedVideo=false&THX=on&show_ce=1" width="'
     + width + '" height="' + height
     + '" type="application/x-shockwave-flash" bgcolor="#000000" allowfullscreen="true" wmode="transparent">';
 }
 
-unsafeWindow.addEventListener("load",init,false);
+window.onload = init;

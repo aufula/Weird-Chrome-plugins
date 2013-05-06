@@ -1,6 +1,6 @@
 weird-chrome-plugin
 =========================
-一些chrome的小插件,方便日常使用。
+一些chrome的小插件
 
 skipad.user.js
 ---------------------

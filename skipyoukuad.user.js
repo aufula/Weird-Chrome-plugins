@@ -13,7 +13,7 @@ document.head.appendChild(style);
 var each = [].forEach;
 var inited = false;
 var init = function() {
- 
+
     if(inited){
         return false;
     }
@@ -57,7 +57,6 @@ var init = function() {
             }
         });
     }
- 
     inited = true;
 }
  
@@ -113,6 +112,6 @@ function generateTag(videoIDS, width, height) {
     + width + '" height="' + height
     + '" type="application/x-shockwave-flash" bgcolor="#000000" allowfullscreen="true" wmode="transparent">';
 }
- 
+
 window.onload = init;
 init();

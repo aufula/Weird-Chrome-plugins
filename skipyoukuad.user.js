@@ -1,28 +1,34 @@
 // ==UserScript==
 // @name skipYoukuAD
 // @description 优酷视频的广告很烦人，替换优酷的默认播放器，双击全屏，跳过广告。
-// @version 1.1
+// @version 1.2
 // @update_url
 // @match *://*.youku.com/*
 // ==/UserScript==
-
+ 
 var style = document.createElement("style");
-style.innerHTML="object,embed{visibility:hidden}";
+style.innerHTML="object,embed{display:none;}#playerInner{width:inherit;height:inherit;}";
 document.head.appendChild(style);
-
+ 
 var each = [].forEach;
+var inited = false;
 var init = function() {
+ 
+    if(inited){
+        return false;
+    }
     var Eembeds = document.embeds;
     var Eobject = document.querySelectorAll("object");
-
+ 
     if (Eembeds) {
         each.call(Eembeds, function(i, index) {
             if (i.src.indexOf("youku.com") != - 1 && i.src.indexOf("player") != - 1) {
-
+ 
                 var fla_v = i.src.match(/sid\/([^\/]+)/) || i.attributes["flashvars"].value.match(/VideoIDS=([^&]+)&/i);
                 if (fla_v) {
                     fla_v = fla_v[1];
                     var div = document.createElement("div");
+                    div.id = "playerInner";
                     div.innerHTML = generateTag(fla_v, i.width, i.height);
                     if (i.parentNode.nodeName.toLowerCase() == "object") {
                         var pNode = i.parentNode;
@@ -34,7 +40,7 @@ var init = function() {
             }
         });
     }
-
+ 
     if (Eobject) {
         each.call(Eobject, function(i, index) {
             var flashvars = i.querySelector("[name=flashvars]");
@@ -43,16 +49,18 @@ var init = function() {
                 if (fla_v) {
                     fla_v = fla_v[1];
                     var div = document.createElement("div");
+                    div.id = "playerInner";
                     div.innerHTML = generateTag(fla_v, i.width, i.height);
                     i.parentNode.replaceChild(div, i);
                 }
-
+ 
             }
         });
     }
-
+ 
+    inited = true;
 }
-
+ 
 function generateTag(videoIDS, width, height) {
     /*
     * flashvars{
@@ -85,7 +93,7 @@ function generateTag(videoIDS, width, height) {
     adext
     skincolor1 /2 /3
     skinalpha
-
+ 
     [_loc_2] : flv | mp4 | flvhd | hd2
     }
     */
@@ -95,12 +103,16 @@ function generateTag(videoIDS, width, height) {
     } else {
         isAutoPlay = "false";
     }
-
-    return '<embed style="visibility:visible" src="http://static.youku.com/v1.0.0/v/swf/player.swf?VideoIDS='
+ 
+    var playerswf = 'http://static.youku.com/v1.0.0/v/swf/player.swf'
+    //var playerswf = 'http://static.youku.com/v1.0.0098/v/swf/qplayer_taobao.swf'
+ 
+    return '<embed style="display:block" src="' + playerswf + '?VideoIDS='
     + videoIDS + '&winType=index&isAutoPlay=' + isAutoPlay
     + '&isShowRelatedVideo=false&THX=on&show_ce=1" width="'
     + width + '" height="' + height
     + '" type="application/x-shockwave-flash" bgcolor="#000000" allowfullscreen="true" wmode="transparent">';
 }
-
-unsafeWindow.addEventListener("load",init,false);
+ 
+window.onload = init;
+init();

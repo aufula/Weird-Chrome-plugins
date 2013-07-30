@@ -1,5 +1,4 @@
-##description
-一些chrome的小插件
+一些Chrome的小插件
 
 ##skipad.user.js
 

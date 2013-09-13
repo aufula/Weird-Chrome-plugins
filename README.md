@@ -15,5 +15,9 @@ G+快速清理未回圈者。
 使twitter.com自动显示最新po的内容,而不是po数量。
 [立即安装](https://github.com/aufula/Weird-Chrome-plugins/raw/master/twitterRefresh.user.js)
 
+##markdownPreviewer
+将.md文件渲染为html（需要服务器支持）
+[立即安装](https://github.com/aufula/Weird-Chrome-plugins/raw/master/markdown.user.js)
+
 ##License
 MIT

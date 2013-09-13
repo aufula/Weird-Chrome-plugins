@@ -6,10 +6,6 @@
 // @match *://modimovie.com/*
 // ==/UserScript==
 
-var style = document.createElement("style");
-style.innerHTML="object,embed{display:none;}";
-
-document.head.appendChild(style);
 window.onload = function(){
     var embed = document.querySelector('embed#flv2id');
     var obj = embed.parentNode;

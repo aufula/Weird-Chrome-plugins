@@ -6,11 +6,11 @@
 // @match *://modimovie.com/*
 // ==/UserScript==
 
-window.onload = function(){
+(function(){
     var embed = document.querySelector('embed#flv2id');
     var obj = embed.parentNode;
     embed.src = embed.src.replace(/flv3/,'flv2');
     embed.style.display='block';
     obj.parentNode.insertBefore(embed,obj.nextSibling);
     obj.remove();
-};
+})();

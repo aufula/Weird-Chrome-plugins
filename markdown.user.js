@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name markdown-previewer 
 // @description read .md file and render it as html
-// @version 1.0.1
+// @version 1.0.2
 // @include *.md
 // ==/UserScript==
 //
@@ -27,8 +27,10 @@
 
     function appendMarkDownExecuteScript(){
         var script = document.createElement('script');
-        script.innerHTML = 'var mdtime = setInterval(function(){ ' +
-             ' if(typeof Markdown!=="undefined"){ clearInterval(mdtime); document.body.innerHTML = (new Markdown.Converter()).makeHtml(document.body.innerHTML) } '+
+        script.innerHTML = 'window.mkdtime = setInterval(function(){ ' +
+             ' if(typeof Markdown!=="undefined"){ ' + 
+                 'document.body.innerHTML = (new Markdown.Converter()).makeHtml(document.body.innerText) }; '+
+                 'clearInterval(mkdtime); '+
              '},100)';
         fragment.appendChild(script);
     }
@@ -52,4 +54,3 @@
 
 
 })();
-

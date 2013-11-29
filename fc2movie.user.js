@@ -3,7 +3,7 @@
 // @description fc2movie vip player
 // @version 1.0
 // @update_url
-// @match *://modimovie.com/*
+// @match *://yantavideo.com/*
 // ==/UserScript==
 
 (function(){

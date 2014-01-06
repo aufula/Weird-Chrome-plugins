@@ -4,6 +4,7 @@
 // @version 1.0
 // @update_url
 // @match *://yantavideo.com/*
+// @match *://yantamovie.net/*
 // ==/UserScript==
 
 (function(){

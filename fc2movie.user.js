@@ -3,8 +3,7 @@
 // @description fc2movie vip player
 // @version 1.0
 // @update_url
-// @match *://yantavideo.com/*
-// @match *://yantamovie.net/*
+// @match *://qingyangmovie.asia/*
 // ==/UserScript==
 
 (function(){
